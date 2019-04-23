@@ -1,3 +1,4 @@
+#pylint: disable=unused-argument, redefined-outer-name, redefined-builtin, too-many-lines
 def delay(ms):
     """
     Delay for the given number of milliseconds.
@@ -48,6 +49,7 @@ def hard_reset():
 
 
 def bootloader():
+    #pylint: disable=anomalous-backslash-in-string
     """
     Activate the bootloader without BOOT\* pins.
     """
@@ -200,9 +202,6 @@ class ADC:
         """
         pass
 
-    def read_timed(self):
-        pass
-
     def read_timed_stop(self):
         pass
 
@@ -213,7 +212,7 @@ class ADC:
         """
         pass
 
-    def read_timed(buf, timer):
+    def read_timed(self, buf, timer):
         """
         Read analog values into ``buf`` at a rate set by the ``timer`` object.
         """
@@ -262,31 +261,31 @@ class CAN:
         """
         pass
 
-    def clearfilter(bank):
+    def clearfilter(self, bank):
         """
         Clear and disables a filter bank.
         """
         pass
 
-    def any(fifo):
+    def any(self, fifo):
         """
         Return True if any message waiting on the FIFO, else False.
         """
         pass
 
-    def recv(fifo, timeout=5000):
+    def recv(self, fifo, timeout=5000):
         """
         Receive data on the bus.
         """
         pass
 
-    def send(data, id, timeout=0, rtr=False):
+    def send(self, data, id, timeout=0, rtr=False):
         """
         Send a message on the bus.
         """
         pass
 
-    def rxcallback(fifo, fun):
+    def rxcallback(self, fifo, fun):
         """
         Register a function to be called when a message is accepted into a empty fifo:
         """
@@ -310,7 +309,7 @@ class DAC:
         """
         pass
 
-    def deinit():
+    def deinit(self):
         """
         De - initialise the DAC making its pin available for other uses.
         """
@@ -455,7 +454,7 @@ class LCD:
 
     def command(self, instr_data, buf):
         """
-        Send an arbitrary command to the LCD.  Pass 0 for ``instr_data`` to send an
+        Send an arbitrary command to the LCD.  pass 0 for ``instr_data`` to send an
         instruction, otherwise pass 1 to send data.  ``buf`` is a buffer with the
         instructions/data to send.
         """
@@ -552,7 +551,7 @@ class Pin:
     AF_PP = "AF_PP"
     ANALOG = "ANALOG"
     IN = "IN"
-    OUT= "OUT"
+    OUT = "OUT"
     OUT_OD = "OUT_OD"
     OUT_PP = "OUT_PP"
     PULL_DOWN = "PULL_DOWN"
@@ -614,7 +613,7 @@ class Pin:
         """
         pass
 
-    def af_list(cls, ):
+    def af_list(self, cls):
         """
         Returns an array of alternate functions available for this pin.
         """
@@ -777,7 +776,7 @@ class SPI:
         """
         pass
 
-    def init(self, mode,  prescaler, baudrate=328125, polarity=1, phase=0, bits=8, firstbit=MSB, ti=False, crc=None):
+    def init(self, mode, prescaler, baudrate=328125, polarity=1, phase=0, bits=8, firstbit=MSB, ti=False, crc=None):
         """
         Initialise the SPI bus with the given parameters:
         """
@@ -810,7 +809,7 @@ class Switch:
         """
         pass
 
-    def __call__():
+    def __call__(self):
         """
         Call switch object directly to get its state: True if pressed down, False otherwise.
         """
@@ -982,13 +981,6 @@ class UART:
         """
         pass
 
-    def writechar(char):
-        """
-        Write a single character on the bus. char is an integer to write.
-        Return value: None. See note below if CTS flow control is used.
-        """
-        pass
-
     def sendbreak(self):
         """
         Send a break condition on the bus.
@@ -1000,13 +992,13 @@ class USB_HID:
     Create a new USB_HID object.
     """
 
-    def recv(data, timeout=5000):
+    def recv(self, data, timeout=5000):
         """
         Receive data on the bus.
         """
         pass
 
-    def send(data):
+    def send(self, data):
         """
         Send data over the USB HID interface:
         """
