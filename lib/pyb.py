@@ -454,7 +454,7 @@ class LCD:
 
     def command(self, instr_data, buf):
         """
-        Send an arbitrary command to the LCD.  pass 0 for ``instr_data`` to send an
+        Send an arbitrary command to the LCD.  Pass 0 for ``instr_data`` to send an
         instruction, otherwise pass 1 to send data.  ``buf`` is a buffer with the
         instructions/data to send.
         """
@@ -613,7 +613,8 @@ class Pin:
         """
         pass
 
-    def af_list(self, cls):
+    @classmethod
+    def af_list(cls):
         """
         Returns an array of alternate functions available for this pin.
         """
